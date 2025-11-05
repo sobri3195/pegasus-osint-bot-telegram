@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    container_name: pegasus-osint-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+    environment:
+      - TZ=Asia/Jakarta
+    networks:
+      - pegasus-net
+
+  redis:
+    image: redis:7-alpine
+    container_name: pegasus-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    networks:
+      - pegasus-net
+
+networks:
+  pegasus-net:
+    driver: bridge
+
+volumes:
+  redis-data:
