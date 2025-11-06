@@ -2,6 +2,32 @@
 
 Bot Telegram ringan untuk riset OSINT yang berfokus pada data teknis dan publik (domain, IP, threat intelligence, pencarian sumber publik, pelacakan ekspedisi, info kode pos). Dirancang untuk pengguna yang butuh alat bantu pengumpulan intelijen legitimate, auditing, dan respon insiden — dengan prinsip privasi, transparansi, dan kepatuhan hukum.
 
+## 👨‍💻 Author
+
+**Lettu Kes dr. Muhammad Sobri Maulana, S.Kom, CEH, OSCP, OSCE**
+
+- 🌐 GitHub: [github.com/sobri3195](https://github.com/sobri3195)
+- 📧 Email: [muhammadsobrimaulana31@gmail.com](mailto:muhammadsobrimaulana31@gmail.com)
+- 🌐 Website: [muhammadsobrimaulana.netlify.app](https://muhammadsobrimaulana.netlify.app)
+- 🌐 Portfolio: [muhammad-sobri-maulana-kvr6a.sevalla.page](https://muhammad-sobri-maulana-kvr6a.sevalla.page)
+
+### 📱 Social Media
+
+- 📺 YouTube: [@muhammadsobrimaulana6013](https://www.youtube.com/@muhammadsobrimaulana6013)
+- 📞 Telegram: [@winlin_exploit](https://t.me/winlin_exploit)
+- 🎵 TikTok: [@dr.sobri](https://www.tiktok.com/@dr.sobri)
+- 💬 Grup WhatsApp: [Join Group](https://chat.whatsapp.com/B8nwRZOBMo64GjTwdXV8Bl)
+
+### 💖 Support & Donation
+
+Jika bot ini bermanfaat untuk Anda, pertimbangkan untuk memberikan dukungan melalui:
+
+- ☕ [Trakteer](https://trakteer.id/g9mkave5gauns962u07t)
+- 💳 [Lynk.id](https://lynk.id/muhsobrimaulana)
+- 🛒 [Gumroad](https://maulanasobri.gumroad.com/)
+- 🎨 [Karya Karsa](https://karyakarsa.com/muhammadsobrimaulana)
+- 💰 [Nyawer](https://nyawer.co/MuhammadSobriMaulana)
+
 ## ⚠️ Penting — Batasan & Etika
 
 **Bot ini TIDAK menyediakan, menyimpan, atau mengakses:**
@@ -86,7 +112,7 @@ Pastikan selalu mendapatkan **izin eksplisit** sebelum melakukan pengujian atau 
 
 1. **Clone repository**
 ```bash
-git clone https://github.com/yourusername/pegasus-osint-bot-telegram.git
+git clone https://github.com/sobri3195/pegasus-osint-bot-telegram.git
 cd pegasus-osint-bot-telegram
 ```
 
@@ -262,9 +288,10 @@ MIT License - lihat [LICENSE](LICENSE) file untuk detail.
 
 ## 📞 Support
 
-- 📧 Email: support@example.com
-- 💬 Telegram Group: [@pegasus_osint_support](https://t.me/pegasus_osint_support)
-- 📖 Documentation: [Wiki](https://github.com/yourusername/pegasus-osint-bot-telegram/wiki)
+- 📧 Email: [muhammadsobrimaulana31@gmail.com](mailto:muhammadsobrimaulana31@gmail.com)
+- 💬 Telegram: [@winlin_exploit](https://t.me/winlin_exploit)
+- 💬 Grup WhatsApp: [Join Group](https://chat.whatsapp.com/B8nwRZOBMo64GjTwdXV8Bl)
+- 📖 Documentation: [Wiki](https://github.com/sobri3195/pegasus-osint-bot-telegram/wiki)
 
 ## ⚖️ Disclaimer
 
