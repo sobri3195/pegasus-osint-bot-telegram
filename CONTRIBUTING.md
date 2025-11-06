@@ -13,8 +13,14 @@ Dengan berpartisipasi dalam project ini, Anda setuju untuk menjunjung tinggi:
 
 ## 🚫 Apa yang TIDAK Boleh Dikontribusikan
 
-**DILARANG KERAS** membuat PR yang:
-- ❌ Menambahkan fitur untuk mengakses data pribadi sensitif (NIK, KTP, rekening bank, dll)
+**DILARANG KERAS** membuat PR yang menambahkan fitur untuk mengakses:
+- ❌ Data pribadi sensitif (NIK/KTP, data bank, NPWP)
+- ❌ Rekam kriminal atau data penegak hukum
+- ❌ Akun email target atau password
+- ❌ Face recognition atau identifikasi biometrik
+- ❌ Data internal yang dilindungi atau proprietary
+
+**DILARANG JUGA** membuat PR yang:
 - ❌ Mengimplementasikan scraping atau crawling yang melanggar ToS
 - ❌ Menambahkan fitur tracking/surveillance tanpa consent
 - ❌ Bypass security measures atau rate limiting

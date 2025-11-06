@@ -83,6 +83,18 @@ Saat ini kami tidak memiliki formal bug bounty program, namun:
 
 **Note**: Vulnerability disclosure harus koordinated (tidak public disclosure tanpa izin).
 
+## 🚫 Data Sensitif yang Dilarang
+
+Bot ini **TIDAK BOLEH** digunakan untuk mengakses, mencari, atau mengumpulkan:
+
+- ❌ Data pribadi sensitif (NIK/KTP, data bank, NPWP)
+- ❌ Rekam kriminal atau data penegak hukum
+- ❌ Akun email target atau password
+- ❌ Face recognition atau identifikasi biometrik
+- ❌ Data internal yang dilindungi atau proprietary
+
+Setiap fitur atau vulnerability yang berkaitan dengan akses ke data-data di atas harus segera dilaporkan sebagai **Critical Security Issue**.
+
 ## ⚠️ Out of Scope
 
 Issues berikut **tidak dianggap** security vulnerabilities:

@@ -36,8 +36,14 @@ Bot ini dirancang untuk penggunaan LEGITIMATE seperti:
 • Incident response
 • Pengumpulan informasi dari sumber publik
 
-<b>DILARANG KERAS:</b>
-❌ Mengakses/mencari data pribadi sensitif (NIK, rekening bank, NPWP, dll)
+<b>BOT INI TIDAK MENYEDIAKAN AKSES KE:</b>
+❌ Data pribadi sensitif (NIK/KTP, data bank, NPWP)
+❌ Rekam kriminal atau data penegak hukum
+❌ Akun email target atau password
+❌ Face recognition atau identifikasi biometrik
+❌ Data internal yang dilindungi atau proprietary
+
+<b>DILARANG JUGA:</b>
 ❌ Tracking individu tanpa izin
 ❌ Penggunaan untuk aktivitas ilegal
 ❌ Pengecekan massal tanpa otorisasi
