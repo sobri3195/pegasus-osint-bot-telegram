@@ -8,6 +8,7 @@ from utils.config import settings
 from utils.logging import setup_logging, audit_logger
 from utils.auth import IsAdmin, IsWhitelisted, admin_required, whitelist_required
 from utils.rate_limiting import rate_limiter
+from utils.sensitive_data import SensitiveDataFilter, get_ethics_content
 
 from modules.ip import get_ip_info, format_ip_result
 from modules.domain import get_domain_info, format_domain_result
@@ -49,6 +50,9 @@ Bot ini dirancang untuk penggunaan LEGITIMATE seperti:
 ❌ Pengecekan massal tanpa otorisasi
 ❌ Pelanggaran privasi atau hukum yang berlaku
 
+🛡️ <b>PROTEKSI AKTIF:</b>
+Bot ini memiliki sistem deteksi otomatis yang akan memblokir query yang mencoba mengakses data sensitif. Setiap pelanggaran akan dicatat dalam audit log.
+
 Dengan menggunakan bot ini, Anda setuju untuk:
 ✅ Menggunakan hanya untuk tujuan legitimate
 ✅ Mematuhi hukum dan regulasi yang berlaku
@@ -56,6 +60,7 @@ Dengan menggunakan bot ini, Anda setuju untuk:
 ✅ Bertanggung jawab atas penggunaan bot ini
 
 Ketik /help untuk melihat daftar perintah.
+Ketik /ethics untuk panduan penggunaan yang etis dan legal.
 """
 
 HELP_MESSAGE = """
@@ -83,8 +88,10 @@ HELP_MESSAGE = """
 <b>ℹ️ Informasi:</b>
 /start - Tampilkan pesan selamat datang
 /help - Tampilkan pesan ini
+/ethics - Panduan etika & penggunaan legitimate
 
 <i>Note: Beberapa fitur memerlukan API key yang valid.</i>
+<i>🛡️ Bot ini memiliki proteksi otomatis terhadap query data sensitif.</i>
 """
 
 
@@ -95,6 +102,33 @@ async def check_rate_limit(message: Message) -> bool:
         await message.reply(
             f"⏱ Rate limit tercapai. Silakan tunggu {wait_time} detik sebelum mencoba lagi."
         )
+        return False
+    
+    return True
+
+
+async def check_sensitive_data(message: Message, input_text: str) -> bool:
+    """
+    Mengecek apakah input mengandung data sensitif.
+    
+    Returns:
+        True jika aman untuk diproses, False jika terdeteksi data sensitif
+    """
+    allowed, warning_msg = await SensitiveDataFilter.filter_message(input_text)
+    
+    if not allowed:
+        await message.reply(warning_msg, parse_mode="HTML")
+        
+        audit_logger.log_command(
+            user_id=message.from_user.id,
+            username=message.from_user.username,
+            command="SENSITIVE_DATA_VIOLATION",
+            args=input_text[:50],
+            chat_id=message.chat.id,
+            success=False,
+            error_msg="Sensitive data detected and blocked"
+        )
+        
         return False
     
     return True
@@ -124,6 +158,19 @@ async def cmd_help(message: Message):
     )
 
 
+@dp.message(Command("ethics"))
+async def cmd_ethics(message: Message):
+    ethics_content = get_ethics_content()
+    await message.reply(ethics_content, parse_mode="HTML")
+    
+    audit_logger.log_command(
+        user_id=message.from_user.id,
+        username=message.from_user.username,
+        command="/ethics",
+        chat_id=message.chat.id
+    )
+
+
 @dp.message(Command("ip"))
 async def cmd_ip(message: Message):
     if not await check_rate_limit(message):
@@ -140,6 +187,9 @@ async def cmd_ip(message: Message):
         return
     
     ip_address = args[1].strip()
+    
+    if not await check_sensitive_data(message, ip_address):
+        return
     
     status_msg = await message.reply("🔍 Sedang mengumpulkan informasi IP...")
     
@@ -202,6 +252,9 @@ async def cmd_domain(message: Message):
     
     domain = args[1].strip()
     
+    if not await check_sensitive_data(message, domain):
+        return
+    
     status_msg = await message.reply("🔍 Sedang mengumpulkan informasi domain...")
     
     try:
@@ -262,6 +315,9 @@ async def cmd_threat(message: Message):
         return
     
     target = args[1].strip()
+    
+    if not await check_sensitive_data(message, target):
+        return
     
     status_msg = await message.reply("🛡️ Sedang mengecek threat intelligence...")
     
@@ -324,6 +380,9 @@ async def cmd_breach(message: Message):
     
     domain = args[1].strip()
     
+    if not await check_sensitive_data(message, domain):
+        return
+    
     status_msg = await message.reply("🔓 Sedang mengecek data breach...")
     
     try:
@@ -385,6 +444,9 @@ async def cmd_track(message: Message):
     
     tracking_number = args[1].strip()
     
+    if not await check_sensitive_data(message, tracking_number):
+        return
+    
     status_msg = await message.reply("📦 Sedang melacak paket...")
     
     try:
@@ -434,6 +496,9 @@ async def cmd_postcode(message: Message):
     
     query = args[1].strip()
     
+    if not await check_sensitive_data(message, query):
+        return
+    
     status_msg = await message.reply("📮 Sedang mencari kode pos...")
     
     try:
@@ -482,6 +547,9 @@ async def cmd_usercheck(message: Message):
         return
     
     username = args[1].strip()
+    
+    if not await check_sensitive_data(message, username):
+        return
     
     status_msg = await message.reply("👤 Sedang mengecek username di berbagai platform...")
     

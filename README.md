@@ -66,6 +66,15 @@ Pastikan selalu mendapatkan **izin eksplisit** sebelum melakukan pengujian atau 
 - Logging aktivitas dengan audit trail
 - Whitelist mechanism untuk corporate use
 
+### 🛡️ **NEW: Sensitive Data Protection**
+- **Deteksi otomatis** untuk data sensitif (NIK/KTP, data bank, NPWP)
+- **Auto-blocking** query yang mencoba mengakses data terlarang
+- **Audit logging** untuk violation attempts
+- **Ethics education** dengan command `/ethics`
+- Pattern recognition untuk rekam kriminal, credentials, biometric data
+- Compliance dengan UU PDP, UU ITE, dan GDPR
+- [Dokumentasi lengkap](SENSITIVE_DATA_PROTECTION.md)
+
 ## 🚀 Instalasi
 
 ### Prerequisites
@@ -130,6 +139,7 @@ docker-compose up -d
 ```
 /start          - Info & peringatan penggunaan
 /help           - Daftar perintah lengkap
+/ethics         - Panduan etika & penggunaan legitimate
 ```
 
 ### Perintah Lookup
